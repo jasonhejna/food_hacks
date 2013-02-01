@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Google Maps JavaScript API v3 Example: Geocoding Simple</title>
+    <style>
+    html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map_canvas {
+  height: 100%;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+
+  #map_canvas {
+    height: 650px;
+  }
+}
+#search-form {
+	position: absolute;
+	top:30px;
+	left:100px;
+}
+</style>
+    <link href="/maps/documentation/javascript/examples/default.css" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+    /* start of html5 geolocation getter */
+	function initialize()
+	  {
+	  if (navigator.geolocation)
+	    {
+	    navigator.geolocation.getCurrentPosition(showPosition,showError);
+	    }
+	  else{x.innerHTML="Geolocation is not supported by this browser.";}
+	  geo_address();
+	  }
+
+	function showPosition(position)
+	  {
+
+	  var lat=position.coords.latitude;
+	  var lon=position.coords.longitude;
+	  getmap(lat,lon);
+	  }
+
+	function showError(error)
+	  {
+	  switch(error.code) 
+	    {
+	    case error.PERMISSION_DENIED:
+	      x.innerHTML="User denied the request for Geolocation."
+	      break;
+	    case error.POSITION_UNAVAILABLE:
+	      x.innerHTML="Location information is unavailable."
+	      break;
+	    case error.TIMEOUT:
+	      x.innerHTML="The request to get user location timed out."
+	      break;
+	    case error.UNKNOWN_ERROR:
+	      x.innerHTML="An unknown error occurred."
+	      break;
+	    }
+	  }
+	  /* end of html5 geolcation getter */
+
+
+	  /* start of map getter and update address text box */
+      var geocoder;
+      var map;
+      function getmap(lat,lon) {
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(lat, lon);
+        var mapOptions = {
+          zoom: 15,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+      }
+
+      function codeAddress() {
+        var address = document.getElementById('address').value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas"></div>
+
+    <div id="search-form">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input type="button" value="Geocode" onclick="codeAddress()">
+    </div>
+  </body>
+</html>
