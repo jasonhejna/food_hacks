@@ -20,13 +20,14 @@
     </head>
 <body onload="initialize()">
 	<!--background map -->
-    <div id="map_canvas"></div>
+    <div id="map_canvas"></div> 
 
     <div class="container_24">
 	<div class="grid_9 prefix_5">.
     <div id="search-form">
 
     <input id="address" type="text" id="addresstextbox" value="Current Address. &nbsp eg. Sydney, NSW" size="35" maxlength="120" onkeydown="if (event.keyCode == 13) document.getElementById('addressupdatebutton').click()">
+    <br>
 
 
     <select name="search_radius" onchange="search_radius(this)">
@@ -37,8 +38,17 @@
 		<option value="10">10km</option>
 		<option value="12">12km</option>
 		<option value="15">15km</option>
-		<option value="25">25km</option
+		<option value="25">25km</option>
 	</select>
+
+		<br>
+	<button id="walkbutton">Walk</button>
+	<button id="drivebutton">Drive</button>
+	<button id="transitbutton">public Transit</button>
+
+	<div id="thenode"></div>
+
+	<div id="status"></div>
     </div>
 </div>
 <div class="clear"></div>

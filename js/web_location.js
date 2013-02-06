@@ -17,7 +17,32 @@
     var lat=position.coords.latitude;
     var lon=position.coords.longitude;
     getmap(lat,lon);
+    ajax_find(lat,lon);
     }
+
+//setTimeout(loctime,800);
+function ajax_find(lat,lng){
+
+$.ajax({
+  type: 'POST', // type of request either Get or Post
+  url: 'user_latlng.php', // Url of the page where to post data and receive response 
+  data: {lat: lat, lng: lng}, // data to be post
+  success: function(data){ //function to be called on successful reply from server
+  //get all restaurant info from json, use data to add pins to gmaps 
+  //$.each(data, function(index, element) {
+/*  var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+    alert(data); }*/
+});
+
+}
 
   function showError(error)
     {
@@ -45,9 +70,7 @@ var geocoder;
 var map;
 var marker;
 
-function getmap(lat,lon) {
-          
-
+function getmap(lat,lon) {  
   $(function() {
     $("#address").autocomplete({
       //This bit uses the geocoder to fetch address values
@@ -83,6 +106,10 @@ function getmap(lat,lon) {
           scaleControl: true,
           scrollwheel: true,
           scaleControl: false,
+          mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+          },
           panControl: true,
           panControlOptions: {
               position: google.maps.ControlPosition.LEFT_TOP
@@ -102,12 +129,13 @@ function getmap(lat,lon) {
         //GEOCODER
         geocoder = new google.maps.Geocoder();
               
-        marker = new google.maps.Marker({
+        var marker = new google.maps.Marker({
+          position: map.getCenter(),
           map: map,
           draggable: true
         });
                       
-      
+
     }
     //end of address finder
 
@@ -120,6 +148,7 @@ function search_radius(input) {
   }
   else 
   {
-    alert("value is not in range, are you hackins?");
+    alert("a fatal error occured, please refresh the page.");
   }
 }
+
