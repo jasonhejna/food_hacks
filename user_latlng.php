@@ -1,6 +1,8 @@
 <?php 
 include "dbconnect.php";
 
+//if post isset, then do this. else, do this but get get lat and lng from session
+
 foreach($_POST as $key => $value)
 {
     switch($key)
@@ -28,7 +30,9 @@ while($row = mysql_fetch_array($result))
   $results[] = array(
       'lat' => $row['lat'],
       'lng' => $row['lng'],
-      
+      'address' => $row['address'],
+      'restaurant_name' => $row['restaurant_name'],
+
    );
   }
 $json = json_encode($results);

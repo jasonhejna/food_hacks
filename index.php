@@ -9,49 +9,46 @@
 		<meta name="author" content="Jason Hejna">
         <link rel="stylesheet" href="css/960_24_col.css" />
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/widestyle.css" />
+        
         <link href='http://fonts.googleapis.com/css?family=Rambla:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
         <script type="text/javascript" src="js/web_location.js"></script>
 		<link href="jquery/css/smoothness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
 		<script src="jquery/js/jquery-1.9.0.js"></script>
 		<script src="jquery/js/jquery-ui-1.10.0.custom.js"></script>
-
+        
     </head>
 <body onload="initialize()">
 	<!--background map -->
     <div id="map_canvas"></div> 
 
-    <div class="container_24">
-	<div class="grid_9 prefix_5">.
+    <div id="logo-image">
+    	<img src="images/bitebrowser-logo.png" />
+    </div>
+		<span id="search-form-bg"></span>
     <div id="search-form">
 
-    <input id="address" type="text" id="addresstextbox" value="Current Address. &nbsp eg. Sydney, NSW" size="35" maxlength="120" onkeydown="if (event.keyCode == 13) document.getElementById('addressupdatebutton').click()">
-    <br>
-
-
-    <select name="search_radius" onchange="search_radius(this)">
-		<option value="2">2km</option>
-		<option value="4">4km</option>
-		<option value="6">6km</option>
-		<option value="8">8km</option>
-		<option value="10">10km</option>
-		<option value="12">12km</option>
-		<option value="15">15km</option>
-		<option value="25">25km</option>
-	</select>
-
-		<br>
+    <input id="address" type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" onkeydown="if (event.keyCode == 13) document.getElementById('addressupdatebutton').click()">
+    <br><br>
 	<button id="walkbutton">Walk</button>
 	<button id="drivebutton">Drive</button>
 	<button id="transitbutton">public Transit</button>
 
-	<div id="thenode"></div>
 
-	<div id="status"></div>
     </div>
-</div>
-<div class="clear"></div>
-</div>
+    <span id="left_filters-bg"></span>
+    <div id="left-filters">
+    	<h2>Sort</h2>
+		<select>
+		  <option value="Price:ASC">Price:ASC</option>
+		  <option value="Price + Rating">Price + Rating</option>
+		  <option value="Location:ASC">Location:ASC</option>
+		</select>
+    </div>
+
+
+
+    <div id="search-sidebar-bg"></div>
 </body>
 </html>

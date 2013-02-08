@@ -9,6 +9,10 @@
       }
     else{x.innerHTML="Geolocation is not supported by this browser.";}
     geo_address();
+
+google.maps.event.addListener(marker, "click", function() {
+   alert("marker gotclicked");
+});
     }
 
   function showPosition(position)
@@ -22,6 +26,16 @@
 
 //setTimeout(loctime,800);
 function ajax_find(lat,lng){
+var pinColor = "0099CC";
+    var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+    var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35));
+
 
 $.ajax({
   type: 'POST', // type of request either Get or Post
@@ -29,20 +43,45 @@ $.ajax({
   data: {lat: lat, lng: lng}, // data to be post
   success: function(data){ //function to be called on successful reply from server
   //get all restaurant info from json, use data to add pins to gmaps 
-  //$.each(data, function(index, element) {
-/*  var infowindow = new google.maps.InfoWindow();
+var icon = new google.maps.MarkerImage("images/blue-dot.png");
+i=0;
+  $.each($.parseJSON(data), function() {
+        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        new google.maps.Size(40, 37),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(12, 35));
 
-    var marker, i;
+        var min = 0;
+        var max = 3;
+        // make random number to create differnt map markers at random
+        var random = Math.floor(Math.random() * (max - min + 1)) + min;
+        if (random == 0){ var icon = new google.maps.MarkerImage("images/purple-dot.png"); }
+        if (random == 1){ var icon = new google.maps.MarkerImage("images/blue-dot.png"); }
+        if (random == 2){ var icon = new google.maps.MarkerImage("images/green-dot.png"); }
+        if (random == 3){ var icon = new google.maps.MarkerImage("images/yellow-dot.png"); }
+        marker = new google.maps.Marker({
+        position: new google.maps.LatLng(this.lat, this.lng),
+        anchor: marker,
+        icon: icon,
+        shadow: pinShadow,
+        map: map,
+        title: this.restaurant_name,
+        options: {
+          content: this.restaurant_name
+        },
+        animation:google.maps.Animation.DROP,
 
-    for (i = 0; i < locations.length; i++) {  
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-    alert(data); }*/
+        });
+      i++;
+      google.maps.event.addListener(marker, "click", function() {
+    window.location = url;
+});
+    });
+     
+  }
 });
 
-}
+} //end ajax func
 
   function showError(error)
     {
@@ -108,15 +147,15 @@ function getmap(lat,lon) {
           scaleControl: false,
           mapTypeControlOptions: {
           style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-          position: google.maps.ControlPosition.BOTTOM_CENTER
+          position: google.maps.ControlPosition.BOTTOM_LEFT
           },
           panControl: true,
           panControlOptions: {
-              position: google.maps.ControlPosition.LEFT_TOP
+              position: google.maps.ControlPosition.LEFT_BOTTOM
           },
           streetViewControl: true,
           streetViewControlOptions: {
-            position: google.maps.ControlPosition.LEFT_TOP
+            position: google.maps.ControlPosition.BOTTOM_LEFT
           },
           disableDoubleClickZoom: true,
           center: latlng,

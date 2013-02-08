@@ -1,0 +1,98 @@
+#logo-image {
+position: absolute;
+top:10px;
+left:10px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rambla', sans-serif;
+  font-size: 0.8em;
+}
+
+#map_canvas {
+
+  height: 100%;
+}
+
+@media print {
+  html, body {
+    height: auto;
+  }
+  h2 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.6em;
+    color: #A9A9A9;
+  }
+
+
+}
+#search-form-bg {
+  position: absolute;
+  top:55px;
+  left:10px;
+  width: 267px;
+  height: 130px;
+  background-color: #000;
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  z-index: 3;
+}
+#left_filters-bg {
+  position: absolute;
+  top:200px;
+  left:10px;
+  width: 267px;
+  height: 130px;
+  background-color: #000;
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  z-index: 2;
+}
+#left-filters {
+  position: absolute;
+  top:188px;
+  left:15px;
+  width:264;
+  z-index: 555;
+}
+#search-form {
+	position: absolute;
+	top:60px;
+	left:15px;
+  z-index: 556;
+}
+#search-sidebar-bg {
+  position: absolute;
+  top:10px;
+  right:10px;
+  width: 267px;
+  height: 94%;
+  background-color: #000;
+  opacity:0.4;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  z-index: 2;
+}
+input[type=text] {
+  outline:none;
+  width: 245px;
+  height:20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.6em;
+  padding: 5px;
+  border: 1px solid #D6D6D6;
+  color: #A9A9A9;
+
+}
+input[type=text]:focus {
+  outline:none;
+  width: 245px;
+  height:20px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.6em;
+  padding: 5px;
+  border: 1px solid #0099CC;
+  color: #A9A9A9;
+
+}
