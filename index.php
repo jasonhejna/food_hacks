@@ -9,7 +9,7 @@
 		<meta name="author" content="Jason Hejna">
         <link rel="stylesheet" href="css/960_24_col.css" />
 
-        <link rel="stylesheet" href="css/widestyle.css" />
+        <link rel="stylesheet" href="css/style.css" />
         
         <link href='http://fonts.googleapis.com/css?family=Rambla:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
@@ -39,16 +39,20 @@
     </div>
     <span id="left_filters-bg"></span>
     <div id="left-filters">
-    	<h2>Sort</h2>
-		<select>
+    	<div id="cheader">Sort:</div>
+		<select id="left-filter-right">
 		  <option value="Price:ASC">Price:ASC</option>
 		  <option value="Price + Rating">Price + Rating</option>
 		  <option value="Location:ASC">Location:ASC</option>
+          <option value="Distance:ASC">Distance:ASC</option>
 		</select>
     </div>
 
 
 
     <div id="search-sidebar-bg"></div>
+    <div id="search-sidebar">
+
+    </div>
 </body>
 </html>

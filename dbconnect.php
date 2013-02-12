@@ -1,14 +1,15 @@
-            <?php
-            //Variables for connecting to your database.
-            //These variable values come from your hosting account.
-            $hostname = "foodhacker.db.8532513.hostedresource.com";
-            $username = "foodhacker";
-            $dbname = "foodhacker";
 
-            //These variable values need to be changed by you before deploying
-            $password = "g4%Gb7S%88@i2#";
-        
-            //Connecting to your database
-            mysql_connect($hostname, $username, $password) OR DIE ("Fatal error, please try again later.");
-            mysql_select_db($dbname);
-            ?>
+<?php
+
+
+// CONNECT TO THE DATABASE
+$DB_NAME = 'foodhacker';
+$DB_HOST = 'foodhacker.db.8532513.hostedresource.com';
+$DB_USER = 'foodhacker';
+$DB_PASS = 'g4%Gb7S%88@i2#';
+$mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
+if (mysqli_connect_errno()) {
+printf("Connect failed: %s\n", mysqli_connect_error()); //remove print in production
+exit();
+}
+?>

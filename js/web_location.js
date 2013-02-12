@@ -37,14 +37,15 @@ var pinColor = "0099CC";
         new google.maps.Point(12, 35));
 
 
-$.ajax({
-  type: 'POST', // type of request either Get or Post
-  url: 'user_latlng.php', // Url of the page where to post data and receive response 
-  data: {lat: lat, lng: lng}, // data to be post
-  success: function(data){ //function to be called on successful reply from server
-  //get all restaurant info from json, use data to add pins to gmaps 
-var icon = new google.maps.MarkerImage("images/blue-dot.png");
-i=0;
+  $.ajax({
+    type: 'POST', // type of request either Get or Post
+    url: 'user_latlng.php', // Url of the page where to post data and receive response 
+    data: {lat: lat, lng: lng}, // data to be post
+    success: function(data){ //function to be called on successful reply from server
+    //get all restaurant info from json, use data to add pins to gmaps 
+    //alert(data);
+  var icon = new google.maps.MarkerImage("images/blue-dot.png");
+  i=0;
   $.each($.parseJSON(data), function() {
         var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
         new google.maps.Size(40, 37),
@@ -66,23 +67,33 @@ i=0;
         shadow: pinShadow,
         map: map,
         title: this.restaurant_name,
-        options: {
-          content: this.restaurant_name
-        },
+        
         animation:google.maps.Animation.DROP,
 
         });
-      i++;
-      google.maps.event.addListener(marker, "click", function() {
-    window.location = url;
-});
-    });
+
+        i++;
+        //make info window content
+        var marker_content = '<div id="marker-restaurant-name">' + this.restaurant_name + '</div><div id="marker-name-subtitle">' + this.name_subtitle + '</div><div id="marker-phonewebsite">' + this.phone + '&nbsp&nbsp&nbsp<a href="http://' + this.website + '" target="_blank">' + this.website + '</a></div>';
+          addInfoWindow(marker,marker_content);
+
+        });
      
-  }
+  }//end success func
 });
 
 } //end ajax func
+function addInfoWindow(marker, message) {
+            var info = message;
 
+            var infoWindow = new google.maps.InfoWindow({
+                content: message
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open(map, marker);
+            });
+        }
   function showError(error)
     {
     switch(error.code) 
@@ -108,6 +119,7 @@ i=0;
 var geocoder;
 var map;
 var marker;
+
 
 function getmap(lat,lon) {  
   $(function() {
@@ -161,7 +173,9 @@ function getmap(lat,lon) {
           center: latlng,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           position: google.maps.ControlPosition.BOTTOM
+
         };
+
               
         map = new google.maps.Map(document.getElementById("map_canvas"), options);
               

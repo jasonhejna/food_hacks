@@ -9,6 +9,7 @@ html, body {
   padding: 0;
   font-family: 'Rambla', sans-serif;
   font-size: 0.8em;
+
 }
 
 #map_canvas {
@@ -19,13 +20,8 @@ html, body {
 @media print {
   html, body {
     height: auto;
-  }
-  h2 {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 1.6em;
-    color: #A9A9A9;
-  }
 
+  }
 
 }
 #search-form-bg {
@@ -52,10 +48,13 @@ html, body {
 }
 #left-filters {
   position: absolute;
-  top:188px;
+  top:198px;
   left:15px;
-  width:264;
+  width:294;
   z-index: 555;
+  font-family: 'Rambla', sans-serif;
+  font-size: 1.8em;
+  color: #FFF;
 }
 #search-form {
 	position: absolute;
@@ -95,4 +94,30 @@ input[type=text]:focus {
   border: 1px solid #0099CC;
   color: #A9A9A9;
 
+}
+#cheader {
+  position: absolute;
+  top: 4px;
+  left: 2px;
+}
+#left-filter-right {
+  position: absolute;
+  top: 4px;
+  left:146px;
+  z-index:560;
+}
+
+/*marker css */
+#marker-restaurant-name {
+  font-family: 'Rambla', sans-serif;
+  font-size: 2.0em;
+}
+#marker-name-subtitle {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.5em;
+  margin-left: 5px;
+}
+#marker-phonewebsite {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1.3em;
 }
