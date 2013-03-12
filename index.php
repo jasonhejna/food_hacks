@@ -76,8 +76,17 @@
 			});
 			$('#search-submit').click(function() {
 				var searchtxt = document.getElementById("searchobject").value;
-			  alert(searchtxt);
-			  
+			  //alert(searchtxt);
+			  $.ajax({
+			    type: 'POST', // type of request either Get or Post
+			    url: 'search_autocomplete.php', // Url of the page where to post data and receive response 
+			    data: {searchtxt: searchtxt}, // data to be post
+			    success: function(data){ //function to be called on successful reply from server
+			    //do something
+			    //alert(data); 
+			    document.getElementById("searchresults").innerHTML = '<div id="searchresult-bg"></div><span id="search-title">' + "search results pending" + '... ' + "write the php" + '</span><br>';
+			    }
+				});
 			});
         });
         </script>
