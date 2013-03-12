@@ -1,7 +1,7 @@
  //don't forget to store lat lon as DOM object
 
- /* start of html5 geolocation getter */
-  function initialize()
+/* start of html5 geolocation getter */
+function initialize()
     {
     if (navigator.geolocation)
       {
@@ -15,14 +15,13 @@ google.maps.event.addListener(marker, "click", function() {
 });
     }
 
-  function showPosition(position)
-    {
-
+function showPosition(position)
+{
     var lat=position.coords.latitude;
     var lon=position.coords.longitude;
     getmap(lat,lon);
     ajax_find(lat,lon);
-    }
+}
 
 //setTimeout(loctime,800);
 function ajax_find(lat,lng){
@@ -39,7 +38,7 @@ var pinColor = "0099CC";
 
   $.ajax({
     type: 'POST', // type of request either Get or Post
-    url: 'user_latlng.php', // Url of the page where to post data and receive response 
+    url: '../user_latlng.php', // Url of the page where to post data and receive response 
     data: {lat: lat, lng: lng}, // data to be post
     success: function(data){ //function to be called on successful reply from server
     //get all restaurant info from json, use data to add pins to gmaps 
@@ -67,9 +66,7 @@ var pinColor = "0099CC";
         shadow: pinShadow,
         map: map,
         title: this.restaurant_name,
-        
         animation:google.maps.Animation.DROP,
-
         });
 
         i++;
@@ -83,6 +80,7 @@ var pinColor = "0099CC";
 });
 
 } //end ajax func
+
 function addInfoWindow(marker, message) {
             var info = message;
 
@@ -94,7 +92,8 @@ function addInfoWindow(marker, message) {
                 infoWindow.open(map, marker);
             });
         }
-  function showError(error)
+        
+function showError(error)
     {
     switch(error.code) 
       {
@@ -114,13 +113,10 @@ function addInfoWindow(marker, message) {
     }
     /* end of html5 geolcation getter */
 
-
 /* start of map getter and update address text box */
 var geocoder;
 var map;
 var marker;
-
-
 function getmap(lat,lon) {  
   $(function() {
     $("#address").autocomplete({
@@ -148,7 +144,7 @@ function getmap(lat,lon) {
     });
   });
         
-      //MAP
+		//MAP
         var latlng = new google.maps.LatLng(lat,lon);
         var options = {
           zoom: 16,

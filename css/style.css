@@ -1,123 +1,246 @@
 #logo-image {
 position: absolute;
-top:10px;
-left:10px;
+top:2px;
+left:4px;
 }
+
+@media only screen and (max-width: 750px){
+   #search-sidebar-bg {
+   	height: 300px !important;
+   	position: relative;
+   	margin-top:3px;
+	left: 4px;
+	}
+	#search-sidebar {
+	margin-top:243px;
+	left: 4px;
+	}
+}
+  
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-family: 'Rambla', sans-serif;
   font-size: 0.8em;
-
+  background-color: #FFF;
 }
 
 #map_canvas {
-
   height: 100%;
+  min-height: 600px;
 }
 
 @media print {
   html, body {
     height: auto;
-
   }
-
 }
+
 #search-form-bg {
   position: absolute;
-  top:55px;
-  left:10px;
+  top:46px;
+  left:4px;
   width: 267px;
-  height: 130px;
+  min-height:88px;
+  margin-bottom: 6px;
   background-color: #000;
-  opacity:0.4;
+  opacity: 0.4;
   filter:alpha(opacity=40); /* For IE8 and earlier */
   z-index: 3;
 }
+
 #left_filters-bg {
   position: absolute;
-  top:200px;
-  left:10px;
+  top:141px;
+  left:4px;
   width: 267px;
-  height: 130px;
+  height: 97px;
   background-color: #000;
   opacity:0.4;
   filter:alpha(opacity=40); /* For IE8 and earlier */
   z-index: 2;
 }
+
 #left-filters {
   position: absolute;
-  top:198px;
-  left:15px;
-  width:294;
+  top:144px;
+  left:9px;
+  width:260px;
   z-index: 555;
   font-family: 'Rambla', sans-serif;
-  font-size: 1.8em;
+  font-size: 1.0em;
   color: #FFF;
 }
+
+
+#directions {
+  position: absolute;
+  top:244px;
+  left:4px;
+  width:259px;
+  padding-left:8px;
+  z-index: 555;
+  font-family: 'Rambla', sans-serif;
+  font-size: 1.0em;
+  color: #000;
+  background-color: #FFF;
+  opacity:0.8;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+  z-index: 2;
+}
+
 #search-form {
 	position: absolute;
-	top:60px;
-	left:15px;
-  z-index: 556;
+	top:50px;
+	left:10px;
+	z-index: 556;
+}
+#search-sidebar {
+	position: absolute;
+	top:8px;
+	right:4px;
+	width:267px;
+	z-index:559;
+}
+#search-object{
+	margin-left:5px;
+	width:247px;
 }
 #search-sidebar-bg {
   position: absolute;
-  top:10px;
-  right:10px;
+  top:4px;
+  right:4px;
   width: 267px;
-  height: 94%;
+  height: 600px;
   background-color: #000;
   opacity:0.4;
   filter:alpha(opacity=40); /* For IE8 and earlier */
   z-index: 2;
 }
+
 input[type=text] {
   outline:none;
-  width: 245px;
-  height:20px;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.6em;
-  padding: 5px;
-  border: 1px solid #D6D6D6;
+  border-radius:0px;
   color: #A9A9A9;
-
+  padding:1px 3px 1px 3px;
+  border: 1px solid #b90606;
+  border-color: #b90606;
 }
+
 input[type=text]:focus {
-  outline:none;
-  width: 245px;
-  height:20px;
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 1.6em;
-  padding: 5px;
-  border: 1px solid #0099CC;
-  color: #A9A9A9;
+  border: 1px solid #00B2EE;
+  border-color: #00B2EE;
+}
 
-}
-#cheader {
-  position: absolute;
-  top: 4px;
-  left: 2px;
-}
-#left-filter-right {
+/*#left-filter-right {
   position: absolute;
   top: 4px;
   left:146px;
   z-index:560;
+}*/
+h2 {
+ float:left;
+ margin-top: 8px;
+ margin-left:4px;
+ font-family: 'Rambla', sans-serif;
+ font-size: 1.5em;
+ color: #FFF;
 }
+hr{
+	color: #FFF;
+	z-index: 601;
+	margin-left:6px;
+	margin-right:8px;
+}
+#searchresults {
+	margin-top: 7px;
+	z-index: 500;
+}
+#searchresult-bg {
+	position: relative;
+	width:277;
+	height:60px;
+	background-color: #000;
+  	opacity: 0.2;
+  	filter:alpha(opacity=20); /* For IE8 and earlier */
+  	z-index: 200;
+}
+
+#directionsPanel {
+	width:246px;
+}
+
+#addresstextbox {
+	width: 246px;
+}
+
+#low-price {
+	float: right;
+	margin-right: 20px;
+}
+
+#high-price {
+	float: right;
+	margin-right:4px;
+}
+
+#mode {
+	float: left;
+	margin-top: 5px;
+	margin-left:2px;
+	font-size: 1.198em;
+}
+
+#sort-radios {
+	float: left;
+	font-size: 0.75em !important;
+	margin-top: 2px;
+	font-family: 'Rambla', sans-serif;
+	font-size: 0.9em;
+	color: #FFF;
+}
+
+#search-title {
+	position: relative;
+	top: -48px;
+	margin: 4px;
+	font-family: 'Rambla', sans-serif;
+	font-size: 1.4em;
+	color: #FFF;
+	z-index: 505;
+}
+#search-submit {
+	position: inherit;
+	right: 8px;
+	top: 4px;
+	width: 26px;
+	height: 21px;
+}
+
 
 /*marker css */
 #marker-restaurant-name {
   font-family: 'Rambla', sans-serif;
   font-size: 2.0em;
 }
+
 #marker-name-subtitle {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.5em;
   margin-left: 5px;
 }
+
 #marker-phonewebsite {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.3em;
+}
+
+.ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
 }

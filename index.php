@@ -3,56 +3,137 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>New Web Project</title>
-        <meta name="description" content="New Web Project">
-		<meta name="keywords" content="food, restaurant, search, engine">
+        <title>Bite Browser</title>
+        <meta name="description" content="New York City Food & Drink Search Engine">
+		<meta name="keywords" content="food, restaurant, search, find, New York City, NYC">
 		<meta name="author" content="Jason Hejna">
         <link rel="stylesheet" href="css/960_24_col.css" />
 
         <link rel="stylesheet" href="css/style.css" />
-        
+        <link rel="shortcut icon" href="images/favicon.ico">
+  		<link rel="icon" href="images/favicon.ico">
         <link href='http://fonts.googleapis.com/css?family=Rambla:400,700|Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" media="screen and (max-device-width: 570px)" href="narrow.css" />
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
-        <script type="text/javascript" src="js/web_location.js"></script>
-		<link href="jquery/css/smoothness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
+        
+		<link href="jquery/css/custom-smoothness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
 		<script src="jquery/js/jquery-1.9.0.js"></script>
 		<script src="jquery/js/jquery-ui-1.10.0.custom.js"></script>
-        
+		<script type="text/javascript" src="web_location.js"></script>
+        <script type="text/javascript" src="search_auto.js"></script>
+        <script type="text/javascript">
+        //jquery form objects
+        $(document).ready(function(){
+        	$( "#travelmode" ).buttonset();
+        	document.getElementById("tmode").innerHTML = "WALKING";
+        	$("#radio1").click(function(){
+				document.getElementById("tmode").innerHTML = 'WALKING';
+				var curreaddress = document.getElementById('currentMarkerAddr').innerHTML;
+		        calcRoute(curreaddress);
+	  		});
+	  		$("#radio2").click(function(){
+				document.getElementById("tmode").innerHTML = 'TRANSIT';
+				var curaddress = document.getElementById('currentMarkerAddr').innerHTML;
+		        calcRoute(curaddress);
+	  		});
+	  		$("#radio3").click(function(){
+				document.getElementById("tmode").innerHTML = 'DRIVING';
+				var curaddress = document.getElementById('currentMarkerAddr').innerHTML;
+		        calcRoute(curaddress);
+	  		});
+	  		
+        	$("#radio4").click(function(){
+				document.getElementById("tmode").innerHTML = 'BICYCLING';
+				var curaddress = document.getElementById('currentMarkerAddr').innerHTML;
+		        calcRoute(curaddress);
+	  		});
+	  		
+	  		$( "#sort-radios" ).buttonset();
+	  		
+	  		$("#radio5").click(function(){
+	    		
+	  		});
+	  		
+	  		
+	  		$("#radio6").click(function(){
+	    		
+	  		});
+	  		$("#radio7").click(function(){
+	    		
+	  		});
+	  		
+	  		$("#search-submit").button({
+			  icons: {
+			    primary: 'ui-icon-search'
+			  }
+			});
+			//enter key event triggert click function
+			$('#searchobject').keypress(function(e) {
+			 if (e.which == 13) {
+			  $('#search-submit').click();
+			  return false;
+			 }
+			});
+			$('#search-submit').click(function() {
+				var searchtxt = document.getElementById("searchobject").value;
+			  alert(searchtxt);
+			  
+			});
+        });
+        </script>
     </head>
 <body onload="initialize()">
 	<!--background map -->
     <div id="map_canvas"></div> 
+	<div id="currentMarkerAddr"></div>
+	<div id="markerlatlng"></div>
+	<div id="tmode"></div>
 
+	<div id="encapsulating_width">
     <div id="logo-image">
     	<img src="images/bitebrowser-logo.png" />
     </div>
 		<span id="search-form-bg"></span>
     <div id="search-form">
 
-    <input id="address" type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" onkeydown="if (event.keyCode == 13) document.getElementById('addressupdatebutton').click()">
-    <br><br>
-	<button id="walkbutton">Walk</button>
-	<button id="drivebutton">Drive</button>
-	<button id="transitbutton">public Transit</button>
-
-
+    <input type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" tabindex="1" onfocus="(this.value = '')" />
+    
+    <form>
+	<div id="travelmode">
+		<input type="radio" id="radio1" name="radio"><label for="radio1" value="WALKING" checked="checked"><img src="images/walk.png"></label>
+		<input type="radio" id="radio2" name="radio"><label for="radio2" value="TRANSIT"><img src="images/transit.png"></label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3" value="DRIVING"><img src="images/drive.png"></label>
+		<input type="radio" id="radio4" name="radio"><label for="radio4" value="BICYCLING"><img src="images/bike.png"></label>
+	</div>
+	</form>
+	
+    <br>
     </div>
     <span id="left_filters-bg"></span>
     <div id="left-filters">
-    	<div id="cheader">Sort:</div>
-		<select id="left-filter-right">
-		  <option value="Price:ASC">Price:ASC</option>
-		  <option value="Price + Rating">Price + Rating</option>
-		  <option value="Location:ASC">Location:ASC</option>
-          <option value="Distance:ASC">Distance:ASC</option>
-		</select>
+    <input type="text" id="high-price" value="$30.00" size="6" maxlength="8" onfocus="(this.value = '$')">
+	<input type="text" id="low-price" value="$1.79" size="6" maxlength="8" onfocus="(this.value = '$')">
+	<h2>Limit:</h2>
+	<div id="sort-radios">
+		<input type="radio" id="radio5" name="radio2" checked="checked"><label for="radio5">Price</label>
+		<input type="radio" id="radio6" name="radio2"><label for="radio6">Distance</label>
+		<input type="radio" id="radio7" name="radio2"><label for="radio7">Price & Rating</label>
+		<input type="radio" id="radio8" name="radio2"><label for="radio8">Rating</label>
+	</div>
     </div>
-
-
+    
+<span id="directions-bg"></span>
+<div id="directions">
+<div id="directionsPanel"></div>
+</div>
 
     <div id="search-sidebar-bg"></div>
     <div id="search-sidebar">
-
+	<input type="text" id="searchobject" value="Search..." size="35" maxlength="127" onfocus="(this.value = '')">
+	<button id="search-submit"></button>
+	<br><hr>
+	<div id="searchresults"></div>
     </div>
+</div> <!-- end encapsulating_width div -->
 </body>
 </html>

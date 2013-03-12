@@ -35,4 +35,6 @@ $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $json=json_encode($rows);
 echo $json;
+
+include "pdoclose.php";
 ?>
