@@ -21,6 +21,8 @@
       { label: "lasagna", category: "" },
       { label: "tapas", category: "" },
       { label: "tacos", category: "" },
+      { label: "curry", category: "" },
+      { label: "spicy", category: "" },
       { label: "burrito", category: "" },
       { label: "Milk Shake", category: "" },
       { label: "Ice Cream", category: "" },
