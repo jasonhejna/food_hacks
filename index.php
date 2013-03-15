@@ -118,11 +118,11 @@
 	
     <br>
     </div>
-    <span id="left_filters-bg"></span>
-    <div id="left-filters">
+    <span id="filters-bg"></span>
+    <div id="filters">
     <input type="text" id="high-price" value="$30.00" size="6" maxlength="8" onfocus="(this.value = '$')">
 	<input type="text" id="low-price" value="$1.79" size="6" maxlength="8" onfocus="(this.value = '$')">
-	<h2>Limit:</h2>
+	<h2>Limit Price...</h2>
 	<div id="sort-radios">
 		<input type="radio" id="radio5" name="radio2" checked="checked"><label for="radio5">Price</label>
 		<input type="radio" id="radio6" name="radio2"><label for="radio6">Distance</label>

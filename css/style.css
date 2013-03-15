@@ -42,30 +42,26 @@ html, body {
   top:46px;
   left:4px;
   width: 267px;
-  min-height:88px;
+  height:81px;
   margin-bottom: 6px;
-  background-color: #000;
-  opacity: 0.4;
-  filter:alpha(opacity=40); /* For IE8 and earlier */
+
   z-index: 3;
 }
 
-#left_filters-bg {
+#filters-bg {
   position: absolute;
-  top:141px;
-  left:4px;
+  top:4px;
+  right:4px;
   width: 267px;
-  height: 97px;
-  background-color: #000;
-  opacity:0.4;
-  filter:alpha(opacity=40); /* For IE8 and earlier */
+  height: 63px;
+
   z-index: 2;
 }
 
-#left-filters {
+#filters {
   position: absolute;
-  top:144px;
-  left:9px;
+  top:7px;
+  right:6px;
   width:260px;
   z-index: 555;
   font-family: 'Rambla', sans-serif;
@@ -76,47 +72,57 @@ html, body {
 
 #directions {
   position: absolute;
-  top:244px;
+  top:133px;
   left:4px;
-  width:259px;
-  padding-left:8px;
+  width:267px;
   z-index: 555;
   font-family: 'Rambla', sans-serif;
   font-size: 1.0em;
-  color: #000;
-  background-color: #FFF;
-  opacity:0.8;
-  filter:alpha(opacity=40); /* For IE8 and earlier */
+  color: #FFF;
+
   z-index: 2;
 }
 
 #search-form {
 	position: absolute;
 	top:50px;
-	left:10px;
+	left:12px;
 	z-index: 556;
 }
 #search-sidebar {
 	position: absolute;
-	top:8px;
+	top: 73px;
 	right:4px;
 	width:267px;
 	z-index:559;
 }
-#search-object{
-	margin-left:5px;
+#searchobject{
+  margin: 6px;
+	
 	width:247px;
 }
 #search-sidebar-bg {
   position: absolute;
-  top:4px;
+  top:72px;
   right:4px;
   width: 267px;
   height: 600px;
-  background-color: #000;
-  opacity:0.4;
-  filter:alpha(opacity=40); /* For IE8 and earlier */
+
   z-index: 2;
+}
+#filters-bg, #search-sidebar-bg, #search-form-bg, #directions {
+  background-color: #000;
+  opacity:0.6;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+
+  border-style:solid;
+  border-width:1px;
+  border-color: #76000D;
 }
 
 input[type=text] {
@@ -156,6 +162,7 @@ hr{
 	margin-right:8px;
 }
 #searchresults {
+
 	margin-top: 7px;
 	z-index: 500;
 }
@@ -163,14 +170,19 @@ hr{
 	position: relative;
 	width:277;
 	height:60px;
-	background-color: #000;
-  	opacity: 0.2;
-  	filter:alpha(opacity=20); /* For IE8 and earlier */
-  	z-index: 200;
+  z-index: 200;
+  background-color: #000;
+  opacity:0.2;
+  filter:alpha(opacity=20); /* For IE8 and earlier */
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
 }
 
 #directionsPanel {
-	width:246px;
+  margin-left: 4px;
+	width:258px;
 }
 
 #addresstextbox {
@@ -195,9 +207,9 @@ hr{
 }
 
 #sort-radios {
-	float: left;
+  margin-top: -6px;
+	float: right;
 	font-size: 0.75em !important;
-	margin-top: 2px;
 	font-family: 'Rambla', sans-serif;
 	font-size: 0.9em;
 	color: #FFF;
@@ -214,10 +226,15 @@ hr{
 }
 #search-submit {
 	position: inherit;
-	right: 8px;
-	top: 4px;
+	right: 7px;
+	top: 8px;
 	width: 26px;
 	height: 21px;
+}
+#travelmode {
+  float: right;
+  margin-right: 6px;
+  margin-top: 5px;
 }
 
 
@@ -243,4 +260,17 @@ hr{
     padding: .2em .4em;
     margin: .8em 0 .2em;
     line-height: 1.5;
+}
+
+/* direction css */
+.adp-placemark {
+  background-color: #000;
+  color: #FFF;
+}
+.adp-warnbox, .warnbox-content {
+  background-color: #000;
+  color: #FFF;
+}
+.warnbox-c1, .warnbox-c2 {
+  background-color: #76000D;
 }
