@@ -77,7 +77,7 @@ function ajax_find(lat,lng){
   $.each($.parseJSON(data), function() {
 
 		//madeSearchResults[i] = '<span id="search-title">' + this.restaurant_name + '</span>';
-		document.getElementById("searchresults").innerHTML += '<div id="searchresult-bg"></div><span id="search-title">' + this.restaurant_name + '... ' + this.subtitle + '</span><br>';
+		document.getElementById("searchresults").innerHTML += '<div id="searchresult-bg"></div><span id="search-title">' + this.restaurant_name + '... ' + this.subtitle + '</span>';
 
   		//document.getElementById("searchresults").innerHTML= parsedData;
 		//document.getElementById(searchresults).innerHTML = this.restaurant_name;  	
@@ -92,10 +92,10 @@ function ajax_find(lat,lng){
         var random = Math.floor(Math.random() * (max - min + 1)) + min;
         if (random == 0){ var icon = new google.maps.MarkerImage("images/purple-dot.png"); }
         if (random == 1){ var icon = new google.maps.MarkerImage("images/blue-dot.png"); }
-        if (random == 2){ var icon = new google.maps.MarkerImage("images/green-dot.png"); }
-        if (random == 3){ var icon = new google.maps.MarkerImage("images/yellow-dot.png"); }
-        if (random == 4){ var icon = new google.maps.MarkerImage("images/ltblue-dot.png"); }
-        if (random == 5){ var icon = new google.maps.MarkerImage("images/orange-dot.png"); }
+        if (random == 2){ var icon = new google.maps.MarkerImage("images/yellow-dot.png"); }
+        if (random == 3){ var icon = new google.maps.MarkerImage("images/ltblue-dot.png"); }
+        if (random == 4){ var icon = new google.maps.MarkerImage("images/orange-dot.png"); }
+        if (random == 5){ var icon = new google.maps.MarkerImage("images/red-dot.png"); }
         
         marker = new google.maps.Marker({
         position: new google.maps.LatLng(this.lat, this.lng),
@@ -104,7 +104,6 @@ function ajax_find(lat,lng){
         shadow: pinShadow,
         map: map,
         title: this.restaurant_name,
-        
         animation:google.maps.Animation.DROP,
 
         });
@@ -137,6 +136,7 @@ function addInfoWindow(marker, message, address) {
                 calcRoute(address);
                 
             });
+            
 }
 
 function calcRoute(address) {
@@ -196,6 +196,10 @@ function getmap(lat,lon) {
         var location = new google.maps.LatLng(ui.item.latitude, ui.item.longitude);
         marker.setPosition(location);
         map.setCenter(location);
+        //call calc route function
+        document.getElementById("markerlatlng").value = location;
+        adasd = document.getElementById("currentMarkerAddr").innerHTML;
+        calcRoute(adasd);
       }
     });
   });
@@ -238,7 +242,8 @@ function getmap(lat,lon) {
         var marker = new google.maps.Marker({
           position: map.getCenter(),
           map: map,
-          title: "You are here right now",
+          icon: new google.maps.MarkerImage("images/user_marker.png"),
+          title: "You are here",
           draggable: true,
         });
         

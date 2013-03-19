@@ -61,7 +61,15 @@
 	  		$("#radio7").click(function(){
 	    		
 	  		});
-	  		
+	  		$("#filter-options-button").button({
+              icons: {
+                primary: 'ui-icon-gear'
+              }
+            });
+            $('#filter-options-button').click(function() {
+                $('#filteroptions').show();
+            });
+
 	  		$("#search-submit").button({
 			  icons: {
 			    primary: 'ui-icon-search'
@@ -94,9 +102,9 @@
 <body onload="initialize()">
 	<!--background map -->
     <div id="map_canvas"></div> 
-	<div id="currentMarkerAddr"></div>
+	<div id="currentMarkerAddr" hidden></div>
 	<div id="markerlatlng"></div>
-	<div id="tmode"></div>
+	<div id="tmode" hidden></div>
 
 	<div id="encapsulating_width">
     <div id="logo-image">
@@ -107,29 +115,18 @@
 
     <input type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" tabindex="1" onfocus="(this.value = '')" />
     
-    <form>
+    
 	<div id="travelmode">
 		<input type="radio" id="radio1" name="radio"><label for="radio1" value="WALKING" checked="checked"><img src="images/walk.png"></label>
 		<input type="radio" id="radio2" name="radio"><label for="radio2" value="TRANSIT"><img src="images/transit.png"></label>
 		<input type="radio" id="radio3" name="radio"><label for="radio3" value="DRIVING"><img src="images/drive.png"></label>
 		<input type="radio" id="radio4" name="radio"><label for="radio4" value="BICYCLING"><img src="images/bike.png"></label>
 	</div>
-	</form>
+	
 	
     <br>
     </div>
-    <span id="filters-bg"></span>
-    <div id="filters">
-    <input type="text" id="high-price" value="$30.00" size="6" maxlength="8" onfocus="(this.value = '$')">
-	<input type="text" id="low-price" value="$1.79" size="6" maxlength="8" onfocus="(this.value = '$')">
-	<h2>Limit Price...</h2>
-	<div id="sort-radios">
-		<input type="radio" id="radio5" name="radio2" checked="checked"><label for="radio5">Price</label>
-		<input type="radio" id="radio6" name="radio2"><label for="radio6">Distance</label>
-		<input type="radio" id="radio7" name="radio2"><label for="radio7">Price & Rating</label>
-		<input type="radio" id="radio8" name="radio2"><label for="radio8">Rating</label>
-	</div>
-    </div>
+
     
 <span id="directions-bg"></span>
 <div id="directions">
@@ -138,10 +135,21 @@
 
     <div id="search-sidebar-bg"></div>
     <div id="search-sidebar">
-	<input type="text" id="searchobject" value="Search..." size="35" maxlength="127" onfocus="(this.value = '')">
-	<button id="search-submit"></button>
-	<br><hr>
+	<input type="text" id="searchobject" value="Search..." size="85" maxlength="127" onfocus="(this.value = '')">
+	<button id="filter-options-button"></button><button id="search-submit"></button>
+	
 	<div id="searchresults"></div>
+    </div>
+        <div id="filteroptions">
+        <input type="text" id="low-price" value="$1.79" size="6" maxlength="8" onfocus="(this.value = '$')">
+        <input type="text" id="high-price" value="$30.00" size="6" maxlength="8" onfocus="(this.value = '$')">
+        <br>
+        <div id="sort-radios">
+            <input type="radio" id="radio5" name="radio2" checked="checked"><label for="radio5">Price</label>
+            <input type="radio" id="radio6" name="radio2"><label for="radio6">Distance</label>
+            <input type="radio" id="radio7" name="radio2"><label for="radio7">Price & Rating</label>
+            <input type="radio" id="radio8" name="radio2"><label for="radio8">Rating</label>
+        </div>
     </div>
 </div> <!-- end encapsulating_width div -->
 </body>
