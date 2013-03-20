@@ -16,14 +16,17 @@
         <link rel="stylesheet" media="screen and (max-device-width: 570px)" href="narrow.css" />
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
         
-		<link href="jquery/css/custom-smoothness/jquery-ui-1.10.0.custom.css" rel="stylesheet">
-		<script src="jquery/js/jquery-1.9.0.js"></script>
-		<script src="jquery/js/jquery-ui-1.10.0.custom.js"></script>
+		<link href="jquery/css/custom-smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet">
+		<script src="jquery/js/jquery-1.9.1.js"></script>
+		<script src="jquery/js/jquery-ui-1.10.2.custom.js"></script>
 		<script type="text/javascript" src="web_location.js"></script>
         <script type="text/javascript" src="search_auto.js"></script>
         <script type="text/javascript">
         //jquery form objects
         $(document).ready(function(){
+            //toggle options hide
+            $('#filteroptions').hide();
+
         	$( "#travelmode" ).buttonset();
         	document.getElementById("tmode").innerHTML = "WALKING";
         	$("#radio1").click(function(){
@@ -67,7 +70,8 @@
               }
             });
             $('#filter-options-button').click(function() {
-                $('#filteroptions').show();
+                
+                $("#filteroptions").toggle();
             });
 
 	  		$("#search-submit").button({
@@ -112,9 +116,6 @@
     </div>
 		<span id="search-form-bg"></span>
     <div id="search-form">
-
-    <input type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" tabindex="1" onfocus="(this.value = '')" />
-    
     
 	<div id="travelmode">
 		<input type="radio" id="radio1" name="radio"><label for="radio1" value="WALKING" checked="checked"><img src="images/walk.png"></label>
@@ -123,24 +124,28 @@
 		<input type="radio" id="radio4" name="radio"><label for="radio4" value="BICYCLING"><img src="images/bike.png"></label>
 	</div>
 	
+    <input type="text" id="addresstextbox" value="Update address..." size="35" maxlength="120" tabindex="1" onfocus="(this.value = '')" />
 	
     <br>
+    <div id="directions">
+    <div id="directionsPanel"></div>
+    </div>
     </div>
 
     
-<span id="directions-bg"></span>
-<div id="directions">
-<div id="directionsPanel"></div>
-</div>
 
-    <div id="search-sidebar-bg"></div>
+
+
+    
     <div id="search-sidebar">
 	<input type="text" id="searchobject" value="Search..." size="85" maxlength="127" onfocus="(this.value = '')">
 	<button id="filter-options-button"></button><button id="search-submit"></button>
 	
 	<div id="searchresults"></div>
     </div>
+
         <div id="filteroptions">
+            <div id="filteroptions-bg"></div>
         <input type="text" id="low-price" value="$1.79" size="6" maxlength="8" onfocus="(this.value = '$')">
         <input type="text" id="high-price" value="$30.00" size="6" maxlength="8" onfocus="(this.value = '$')">
         <br>

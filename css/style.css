@@ -4,17 +4,15 @@ top:2px;
 left:4px;
 }
 
-@media only screen and (max-width: 750px){
-   #search-sidebar-bg {
-   	height: 300px !important;
-   	position: relative;
-   	margin-top:3px;
-	left: 4px;
-	}
-	#search-sidebar {
-	margin-top:243px;
-	left: 4px;
-	}
+@media only screen and (max-width: 835px){
+#search-form {
+  left: 565px;
+}
+#directions {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+}
 }
   
 html, body {
@@ -37,72 +35,57 @@ html, body {
   }
 }
 
-
-
-#filters {
-
-}
-
-
 #directions {
-  position: absolute;
-  top:133px;
-  right:4px;
-  width:267px;
+  position: relative;
+  top: 63px;
+  width:268px;
   z-index: 555;
   font-family: 'Rambla', sans-serif;
   font-size: 1.0em;
   color: #FFF;
 
   z-index: 2;
-  background-color: #000;
-  opacity:0.6;
-  filter:alpha(opacity=60); /* For IE8 and earlier */
-
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -khtml-border-radius: 4px;
-  border-radius: 4px;
+  background-color: #003366;
+  opacity:0.7;
+  filter:alpha(opacity=70); /* For IE8 and earlier */
 }
 
 #search-form {
 	position: absolute;
-	top: 4px;
-	left: 320px;
+	top: 5px;
+	right: 4px;
+  width:267px;
 	z-index: 556;
 }
 #search-sidebar {
 	position: absolute;
-	top: 51px;
+	top: 47px;
 	left:4px;
-	width:297px;
+	width:300px;
 	z-index:559;
 }
 #searchobject{
-	width:292px;
+	width:287px;
   margin-bottom: 6px;
 }
-
-
 
 input[type=text] {
   outline:none;
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 1.6em;
-  border-radius:0px;
   color: #A9A9A9;
   padding:1px 3px 1px 3px;
-  border: 1px solid #FFF;
-  border-color: #FFF;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   -khtml-border-radius: 4px;
   border-radius: 4px;
+  border: 4px solid #ca5151;
+  border-color: #ca5151;
 }
 
 input[type=text]:focus {
-  border: 1px solid #00688B;
-  border-color: #00688B;
+  border: 4px solid #4d7094;
+  border-color: #4d7094;
 }
 
 /*#left-filter-right {
@@ -111,6 +94,7 @@ input[type=text]:focus {
   left:146px;
   z-index:560;
 }*/
+
 h2 {
  float:left;
  margin-top: 8px;
@@ -135,7 +119,7 @@ hr{
 	position: relative;
 	width:300px;
 	height:60px;
-  margin-bottom: -11px;
+  margin-bottom: -6px;
   z-index: 200;
   background-color: #003366;
   opacity:0.7;
@@ -147,15 +131,20 @@ hr{
 }
 
 #directionsPanel {
-  margin-left: 4px;
-	width:258px;
+  position: absolute;
+  top: 9px;
+	width:268px;
+  background-color: #003366;
+    -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
 }
 
 #addresstextbox {
-	width: 189px;
+  float: right;
+	width: 253px;
 }
-
-
 
 #mode {
 	float: left;
@@ -166,6 +155,7 @@ hr{
 
 #sort-radios {
 	float: right;
+  margin-top: 3px;
 	font-size: 0.75em !important;
 	font-family: 'Rambla', sans-serif;
 	font-size: 0.9em;
@@ -174,6 +164,7 @@ hr{
 
 #search-title {
 	position: relative;
+  float: left;
 	top: -48px;
 	margin: 4px;
 	font-family: 'Rambla', sans-serif;
@@ -181,30 +172,58 @@ hr{
 	color: #FFF;
 	z-index: 505;
 }
+
+#search-info {
+position: relative;
+top:5px;
+z-index: 506;
+}
+
 #search-submit {
 	position: inherit;
-	right: -2px;
-	top: 4px;
+	right: 3px;
+	top: 7px;
 	width: 26px !important;
 	height: 21px;
 }
+
 #filter-options-button{
   position: inherit;
-  right: 25px;
-  top: 4px;
+  right: 30px;
+  top: 7px;
   width: 26px;
   height: 21px;
 }
 
 #travelmode {
   float: right;
-  
-}
-#filteroptions {
-  position: inherit;
-  top:33px;
+  margin-bottom: 6px;
 }
 
+#filteroptions-bg {
+  position: inherit;
+
+  top: -5px;
+  left: -6px;
+  width: 280px;
+  height: 82px;
+  
+  background-color: #fff;
+  opacity:0.9;
+  filter:alpha(opacity=90); /* For IE8 and earlier */
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  z-index: -20;
+}
+#filteroptions {
+  position: absolute;
+  float: right;
+  top: 85px;
+  left: 28px;
+  z-index: 710;
+}
 
 /*marker css */
 #marker-restaurant-name {
@@ -232,13 +251,21 @@ hr{
 
 /* direction css */
 .adp-placemark {
-  background-color: #000;
+  background-color: #003366;
   color: #FFF;
+  min-width: 258px;
 }
 .adp-warnbox, .warnbox-content {
-  background-color: #000;
+  background-color: #003366;
   color: #FFF;
 }
 .warnbox-c1, .warnbox-c2 {
-  background-color: #76000D;
+  background-color: #003366;
+}
+.adp-legal {
+  color: #FFF;
+}
+#low-price, #high-price {
+  z-index: 711;
+  float: right;
 }

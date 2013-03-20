@@ -77,7 +77,7 @@ function ajax_find(lat,lng){
   $.each($.parseJSON(data), function() {
 
 		//madeSearchResults[i] = '<span id="search-title">' + this.restaurant_name + '</span>';
-		document.getElementById("searchresults").innerHTML += '<div id="searchresult-bg"></div><span id="search-title">' + this.restaurant_name + '... ' + this.subtitle + '</span>';
+		document.getElementById("searchresults").innerHTML += '<div id="searchresult-bg"></div><span id="search-title">' + this.restaurant_name + '... ' + this.name_subtitle + '</span><span id="search-info">' + this.tags + '</span>';
 
   		//document.getElementById("searchresults").innerHTML= parsedData;
 		//document.getElementById(searchresults).innerHTML = this.restaurant_name;  	
