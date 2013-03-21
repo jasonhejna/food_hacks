@@ -269,3 +269,6 @@ z-index: 506;
   z-index: 711;
   float: right;
 }
+#ui-id-1, #ui-id-2, .ui-autocomplete {
+  z-index: 999;
+}
